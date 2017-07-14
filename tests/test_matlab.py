@@ -8,8 +8,6 @@
 from __future__ import division, absolute_import, print_function
 from __future__ import unicode_literals
 
-__author__ = "Marek Rudnicki"
-
 import numpy as np
 from numpy.testing import assert_equal, assert_almost_equal
 import pandas as pd
@@ -534,3 +532,12 @@ def test_put_object(matlab):
 
     with pytest.raises(NotImplementedError):
         matlab.put('foo', object())
+
+
+def test_cell_dimension(matlab):
+    command = """
+    cellNumEqualDims = { zeros(3,3); ones(3,3); rand(3,3) };
+    """
+    matlab.eval(command)
+    cellNumEqualDims = matlab.get('cellNumEqualDims')
+    assert(cellNumEqualDims.shape == (3,))
