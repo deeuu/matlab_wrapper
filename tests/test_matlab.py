@@ -398,7 +398,7 @@ def test_get_struct(matlab):
     desired = np.array([
         (1, 'a'),
         (2*1j, 'b')
-    ], dtype=[('x', np.complex_), ('y', six.text_type)])
+    ], dtype=[('x', np.complex_, 1), ('y', six.text_type, 1)])
 
     assert_equal(s, desired)
 
@@ -508,7 +508,7 @@ def test_put_get_dataframe(matlab):
     desired = np.array([
         (0, 1.0, 2, 'asdf'),
         (1, 1.1, 4, 'marek')
-    ], dtype=[('index', '<i8'), ('a', '<f8'), ('b', '<i8'), ('c', six.text_type)])
+    ], dtype=[('index', '<i8'), ('a', '<f8'), ('b', '<i8'), ('c', six.text_type, 5)])
 
     assert_equal(a, desired)
 
