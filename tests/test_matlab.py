@@ -6,7 +6,6 @@
 """
 
 from __future__ import division, absolute_import, print_function
-from __future__ import unicode_literals
 
 import numpy as np
 from numpy.testing import assert_equal, assert_almost_equal
