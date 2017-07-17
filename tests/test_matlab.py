@@ -6,7 +6,6 @@
 """
 
 from __future__ import division, absolute_import, print_function
-
 import numpy as np
 from numpy.testing import assert_equal, assert_almost_equal
 import pandas as pd
@@ -373,8 +372,8 @@ def test_get_struct(matlab):
     s = matlab.get('s')
 
     desired = np.array([
-        (1, 'a'),
-        (2*1j, 'b')
+        (1, u'a'),
+        (2*1j, u'b')
     ], dtype=[('x', np.complex_, 1), ('y', six.text_type, 1)])
 
     assert_equal(s, desired)
@@ -393,7 +392,7 @@ def test_get_uninitialized_struct(matlab):
 
     desired = np.array([
         [(1, None), (None, None)],
-        [(None, None), (2, 'a')]
+        [(None, None), (2, u'a')]
     ], dtype=[('x', 'O'), ('y', 'O')])
 
     assert_equal(s, desired)
@@ -413,8 +412,8 @@ def test_get_empty_struct(matlab):
 def test_put_struct(matlab):
 
     a = np.rec.fromrecords([
-        (1, 'a', 1.),
-        (2, 'bb', 2.),
+        (1, u'a', 1.),
+        (2, u'bb', 2.),
     ])
 
     matlab.put('a', a)
@@ -441,8 +440,8 @@ def test_put_struct(matlab):
 def test_put_get_struct(matlab):
 
     a = np.rec.fromrecords([
-        (1, 'a', 1.),
-        (2, 'bb', 2.),
+        (1, u'a', 1.),
+        (2, u'bb', 2.),
     ])
 
     matlab.put('a', a)
